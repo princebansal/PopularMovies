@@ -51,7 +51,7 @@ public class FullMovieActivityNew extends AppCompatActivity {
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Details");
-
+        toolbar.setNavigationOnClickListener(R.class.asSubclass(.asSubclass(.asSubclass(.asSubclass(.getAnnotation(getExternalCacheDir()))))))
         toolbar.setNavigationIcon(R.drawable.ic_arrow_back);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
