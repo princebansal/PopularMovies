@@ -36,7 +36,7 @@ public class ConnectAPI {
 
     //Declared URLs
 
-    private final String API_KEY="eaef4494ae5ef7ef6a542eda241bb721";
+    private final String API_KEY="YOUR_API_KEY";
     private String moviesPopularUrl = "http://api.themoviedb.org/3/movie/popular?api_key="+API_KEY;
     private String moviesMostRatedUrl = "http://api.themoviedb.org/3/movie/top_rated?api_key="+API_KEY;
     private String videoUrl = "http://api.themoviedb.org/3/movie/%d/videos?api_key="+API_KEY;
