@@ -1,8 +1,5 @@
-package com.nanodegree.android.popularmovies.Volley;
+package com.nanodegree.android.popularmovies.Boundary.Controllers;
 
-/**
- * Created by shalini on 21-02-2015.
- */
 import android.app.Application;
 import android.text.TextUtils;
 

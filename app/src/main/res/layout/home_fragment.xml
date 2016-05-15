@@ -1,31 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<FrameLayout
+
+<android.support.v4.widget.SwipeRefreshLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/lightgray"
-    android:paddingTop="15dp">
+    android:id="@+id/swipe_refresh_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
-
-    <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/swipe_refresh_layout"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycler_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
 
-        </android.support.v7.widget.RecyclerView>
+    </android.support.v7.widget.RecyclerView>
+
     <TextView
+        android:id="@+id/nocontent_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/nocontent_text"
+        android:layout_gravity="center"
         android:text="No content available"
         android:textColor="@color/black"
         android:textSize="13sp"
-        android:layout_gravity="center"
-        android:visibility="gone"/>
-    </android.support.v4.widget.SwipeRefreshLayout>
-</FrameLayout>
+        android:visibility="gone" />
+</android.support.v4.widget.SwipeRefreshLayout>

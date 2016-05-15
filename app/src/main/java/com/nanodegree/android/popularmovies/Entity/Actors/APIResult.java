@@ -1,4 +1,4 @@
-package com.nanodegree.android.popularmovies;
+package com.nanodegree.android.popularmovies.Entity.Actors;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Created by Prince Bansal Local on 08-03-2016.
  */
-public class APIResult {
+public class APIResult<E> {
 
     public int id;
     @SerializedName("total_results")
@@ -15,7 +15,7 @@ public class APIResult {
     @SerializedName("total_pages")
     public int totalPages;
 
-    public List<Movie> results;
+    public List<E> results;
 
     public int getId() {
         return id;
@@ -41,11 +41,11 @@ public class APIResult {
         this.totalPages = totalPages;
     }
 
-    public List<Movie> getResults() {
+    public List<E> getResults() {
         return results;
     }
 
-    public void setResults(List<Movie> results) {
+    public void setResults(List<E> results) {
         this.results = results;
     }
 }

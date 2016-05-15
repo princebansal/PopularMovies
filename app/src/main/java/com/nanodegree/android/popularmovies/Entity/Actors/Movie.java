@@ -1,15 +1,17 @@
-package com.nanodegree.android.popularmovies;
+package com.nanodegree.android.popularmovies.Entity.Actors;
+
+import android.content.ContentValues;
+import android.database.Cursor;
 
 import com.google.gson.annotations.SerializedName;
+import com.nanodegree.android.popularmovies.Boundary.Database.MoviesDbHelper;
 
 import org.json.JSONObject;
 import org.parceler.Parcel;
 
 import java.util.List;
 
-/**
- * Created by shalini on 28-07-2015.
- */
+
 
 @Parcel
 public class Movie {
@@ -38,6 +40,7 @@ public class Movie {
     public boolean video;
     @SerializedName("genre_ids")
     public List<Integer> genreIds;
+    public boolean favourite=false;
 
 
     public String getPosterPath() {
@@ -153,4 +156,50 @@ public class Movie {
     public void setGenreIds(List<Integer> genreIds) {
         this.genreIds = genreIds;
     }
+
+    public boolean isFavourite() {
+        return favourite;
+    }
+
+    public void setFavourite(boolean favourite) {
+        this.favourite = favourite;
+    }
+
+    // Create a Movie object from a cursor
+    public static Movie fromCursor(Cursor curMovie) {
+
+        Movie movie = new Movie();
+        movie.setId(curMovie.getInt(curMovie.getColumnIndex(MoviesDbHelper.COL_ID)));
+        movie.setPosterPath(curMovie.getString(curMovie.getColumnIndex(MoviesDbHelper.MOVIE_COL_POSTER_PATH)));
+        movie.setAdult(Boolean.parseBoolean(curMovie.getString(curMovie.getColumnIndex(MoviesDbHelper.MOVIE_COL_ADULT))));
+        movie.setOverview(curMovie.getString(curMovie.getColumnIndex(MoviesDbHelper.MOVIE_COL_OVERVIEW)));
+        movie.setReleaseDate(curMovie.getString(curMovie.getColumnIndex(MoviesDbHelper.MOVIE_COL_RELEASE_DATE)));
+        movie.setOriginalTitle(curMovie.getString(curMovie.getColumnIndex(MoviesDbHelper.MOVIE_COL_ORIGINAL_TITLE)));
+        movie.setOriginalLanguage(curMovie.getString(curMovie.getColumnIndex(MoviesDbHelper.MOVIE_COL_ORIGINAL_LANGUAGE)));
+        movie.setBackdropPath(curMovie.getString(curMovie.getColumnIndex(MoviesDbHelper.MOVIE_COL_BACKDROP_PATH)));
+        movie.setPopularity(curMovie.getDouble(curMovie.getColumnIndex(MoviesDbHelper.MOVIE_COL_POPULARITY)));
+        movie.setVoteAverage(curMovie.getDouble(curMovie.getColumnIndex(MoviesDbHelper.MOVIE_COL_VOTE_AVERAGE)));
+        movie.setVoteCount(curMovie.getInt(curMovie.getColumnIndex(MoviesDbHelper.MOVIE_COL_VOTE_COUNT)));
+        movie.setFavourite(Boolean.parseBoolean(curMovie.getString(curMovie.getColumnIndex(MoviesDbHelper.MOVIE_COL_FAVORITE))));
+
+        return movie;
+    }
+
+    public ContentValues getContentValues() {
+        ContentValues values = new ContentValues();
+        values.put(MoviesDbHelper.COL_ID, id);
+        values.put(MoviesDbHelper.MOVIE_COL_POSTER_PATH, posterPath);
+        values.put(MoviesDbHelper.MOVIE_COL_ADULT, adult);
+        values.put(MoviesDbHelper.MOVIE_COL_OVERVIEW, overview);
+        values.put(MoviesDbHelper.MOVIE_COL_RELEASE_DATE, releaseDate);
+        values.put(MoviesDbHelper.MOVIE_COL_ORIGINAL_TITLE, originalTitle);
+        values.put(MoviesDbHelper.MOVIE_COL_ORIGINAL_LANGUAGE, originalLanguage);
+        values.put(MoviesDbHelper.MOVIE_COL_BACKDROP_PATH, backdropPath);
+        values.put(MoviesDbHelper.MOVIE_COL_POPULARITY, popularity);
+        values.put(MoviesDbHelper.MOVIE_COL_VOTE_AVERAGE, voteAverage);
+        values.put(MoviesDbHelper.MOVIE_COL_VOTE_COUNT, voteCount);
+        values.put(MoviesDbHelper.MOVIE_COL_FAVORITE, favourite);
+        return values;
+    }
+
 }
